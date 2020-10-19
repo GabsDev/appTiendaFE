@@ -5,6 +5,6 @@
 ## Instrucciones
 
 - `git clone https://github.com/GabsDev/appTiendaFE.git`
-- `cd appTienda`
+- `cd appTiendaFE`
 - `npm install`
 - `npm start`
