@@ -14,37 +14,15 @@
       >
         <span> ANNA </span> salon y spa
       </a>
-      <button
-        aria-controls="navigation-index"
-        aria-label="Toggle navigation"
-        class="navbar-toggler navbar-toggler"
-        [attr.aria-expanded]="!isCollapsed"
-        (click)="isCollapsed = !isCollapsed"
-        id="navigation"
-        type="button"
-      >
-        <span class="navbar-toggler-bar bar1"> </span>
-        <span class="navbar-toggler-bar bar2"> </span>
-        <span class="navbar-toggler-bar bar3"> </span>
-      </button>
     </div>
+    <button class="btn btn-link mr-1" (click)="irInicio()">Inicio</button>
+    <button class="btn btn-link mr-1" (click)="irAcercaDe()">Acerca</button>
+
     <div class="navbar-collapse justify-content-end" id="navigation">
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand"><a> BLK• </a></div>
-          <div class="col-6 collapse-close text-right">
-            <button
-              aria-controls="navigation-index"
-              aria-label="Toggle navigation"
-              class="navbar-toggler"
-              [attr.aria-expanded]="!isCollapsed"
-              (click)="isCollapsed = !isCollapsed"
-              id="navigation"
-              type="button"
-            >
-              <i class="tim-icons icon-simple-remove"> </i>
-            </button>
-          </div>
+          <div class="col-6 collapse-close text-right"></div>
         </div>
       </div>
       <ul class="navbar-nav">
