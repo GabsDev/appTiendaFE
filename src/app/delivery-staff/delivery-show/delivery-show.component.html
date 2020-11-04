@@ -1,0 +1,33 @@
+<section class="section">
+  <img class="path" src="assets/img/waves.png" />
+  <div class="page-header">
+    <div class="content-center" *ngIf="datos?.id">
+      <div
+        class="row row-grid justify-content-between align-items-center text-left"
+      >
+        <div class="col-lg-6 col-md-6">
+          <hr class="line-success" />
+          <h3>Perfil personal de entrega</h3>
+          <h1 class="text-white">
+            {{ datos.fullName }} <br />
+
+            <span class="text-white"> </span>
+          </h1>
+          <p class="text-white mb-3">
+            Id: {{ datos.idCard }} <br />
+            Telefono: {{ datos.telephone }} <br />
+            Email: {{ datos.email }} <br />
+            Vehiculo: {{ datos.vehicle.brand }} {{ datos.vehicle.model }}
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-5">
+          <img
+            alt="Circle image"
+            class="img-fluid"
+            src="assets\img\hair2\png\038-map.png"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

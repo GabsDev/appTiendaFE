@@ -13,6 +13,10 @@ import { ShareModule } from "./share/share.module";
 import { HomeModule } from "./home/home.module";
 
 import { UserModule } from "./user/user.module";
+import { ProductModule } from "./product/product.module";
+import { OrderModule } from "./order/order.module";
+import { DeliveryStaffModule } from "./delivery-staff/delivery-staff.module";
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -23,11 +27,10 @@ import { UserModule } from "./user/user.module";
     // LandingpageComponent
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-
-    AppRoutingModule,
     // BsDropdownModule.forRoot(),
     // ProgressbarModule.forRoot(),
     // TooltipModule.forRoot(),
@@ -43,7 +46,11 @@ import { UserModule } from "./user/user.module";
     ShareModule,
     HomeModule,
     UserModule,
+    ProductModule,
+    OrderModule,
+    DeliveryStaffModule,
     RouterModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

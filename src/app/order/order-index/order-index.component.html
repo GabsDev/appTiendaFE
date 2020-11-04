@@ -1,0 +1,58 @@
+<section class="section section-lg">
+  <img class="path" src="assets/img/path2.png" />
+  <div class="page-header">
+    <div class="content-center" *ngIf="datos?.id"></div>
+    <div class="container">
+      <hr class="line-success" />
+      <h3>Listado de ordenes</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-center">Fecha</th>
+            <th>Tipo Orden</th>
+            <th>Estado</th>
+            <th>Monto</th>
+            <th class="text-right">Cliente</th>
+            <th class="text-right">Aciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datos">
+            <td class="text-center">{{ item.orderDate }}</td>
+            <td>{{ item.orderType }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.total | currency: "₡" }}</td>
+            <td class="text-right">
+              {{ item.client.fullname }}
+            </td>
+            <td class="td-actions text-right">
+              <button
+                type="button"
+                rel="tooltip"
+                class="btn btn-info btn-sm btn-icon"
+                [routerLink]="['/staff/delivery', item.id]"
+                routerLinkActive="active"
+              >
+                <i class="tim-icons icon-single-02"></i>
+              </button>
+              <button
+                type="button"
+                rel="tooltip"
+                class="btn btn-success btn-sm btn-icon"
+              >
+                <i class="tim-icons icon-settings-gear-63"></i>
+              </button>
+              <button
+                type="button"
+                rel="tooltip"
+                class="btn btn-danger btn-sm btn-icon"
+              >
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

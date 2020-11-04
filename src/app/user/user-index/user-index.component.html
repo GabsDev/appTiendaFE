@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row align-items-center my-5"></div>
+  <div class="row align-items-center my-5">
+    <div class="col-sm-12">
+      <tabset type="pills" class="nav-pills-danger nav-pills-icons">
+        <tab>
+          <ng-template tabHeading>
+            <i
+              class="tim-icons icon-atom"
+              [routerLink]="['/user/login']"
+              routerLinkActive="active"
+            >
+            </i>
+            Login
+          </ng-template>
+        </tab>
+        <tab>
+          <ng-template tabHeading>
+            <i
+              class="tim-icons icon-chat-33"
+              [routerLink]="['/user/register']"
+              routerLinkActive="active"
+            >
+            </i>
+            Registrarse
+          </ng-template>
+        </tab>
+      </tabset>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

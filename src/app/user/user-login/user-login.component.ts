@@ -1,24 +1,20 @@
-import { OnDestroy } from "@angular/core";
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
-import noUiSlider from "nouislider";
 import { AuthenticationService } from "src/app/share/authentication.service";
 import { NotificacionService } from "src/app/share/notificacion.service";
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"],
+  selector: "app-user-login",
+  templateUrl: "./user-login.component.html",
+  styleUrls: ["./user-login.component.scss"],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class UserLoginComponent implements OnInit {
   isCollapsed = true;
   focus;
   focus1;
   focus2;
-  isAutenticated: boolean;
-  currentUser: any;
+
   formulario: FormGroup;
   makeSubmit: boolean = false;
   infoUsuario: any;
@@ -32,6 +28,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.reactiveForm();
   }
 
+  scrollToDownload(element: any) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+
   // Definir el formulario con su reglas de validación
   reactiveForm() {
     /*https://angular.io/guide/reactive-forms
@@ -41,19 +41,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       password: ["", Validators.required],
     });
   }
-
   ngOnInit(): void {
     this.mensajes();
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.add("landing-page");
-
-    //Subscripción a la información del usuario actual
-    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
-
-    //Subscripción al booleano que indica si esta autenticado
-    this.authService.isAuthenticated.subscribe(
-      (valor) => (this.isAutenticated = valor)
-    );
   }
 
   mensajes() {
@@ -74,21 +63,26 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.formulario.reset();
   }
   submitForm() {
-    this.makeSubmit = true;
-    //Validación
-    if (this.formulario.invalid) {
-      return;
+    try {
+      this.makeSubmit = true;
+      //Validación
+      if (this.formulario.invalid) {
+        return;
+      }
+      console.log(this.formulario.value);
+      this.authService
+        .loginUser(this.formulario.value)
+        .subscribe((respuesta: any) => {
+          (this.infoUsuario = respuesta), this.router.navigate(["/"]);
+        });
+    } catch (error) {
+      this.notificacion.mensaje(
+        "Usuario",
+        "No se puede iniciar sesion! Verifique sus credenciales para ingresar",
+        "error"
+      );
     }
-    //console.log(this.formulario.value);
-    this.authService
-      .loginUser(this.formulario.value)
-      .subscribe((respuesta: any) => {
-        (this.infoUsuario = respuesta), this.router.navigate(["/"]);
-      });
-    var refModal = document.getElementById("myModal2");
-    refModal.style.display = "none";
   }
-
   /* Manejar errores de formulario en Angular */
 
   public errorHandling = (control: string, error: string) => {
@@ -98,9 +92,4 @@ export class HomeComponent implements OnInit, OnDestroy {
       (this.makeSubmit || this.formulario.controls[control].touched)
     );
   };
-
-  ngOnDestroy() {
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.remove("landing-page");
-  }
 }

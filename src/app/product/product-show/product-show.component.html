@@ -1,0 +1,45 @@
+<section class="section section-lg">
+  <img class="path" src="assets/img/path4.png" />
+  <div class="page-header">
+    <div class="content-center" *ngIf="datos?.id">
+      <div
+        class="row row-grid justify-content-between align-items-center text-left"
+      >
+        <div class="col-lg-6 col-md-6">
+          <h1 class="text-white">
+            {{ datos.name }} <br />
+
+            <span class="text-white"> </span>
+          </h1>
+          <p class="text-white mb-3">
+            {{ datos.description }}
+          </p>
+          <div class="btn-wrapper mb-3">
+            <p class="category text-success d-inline mr-1">
+              {{ datos.price | currency: "₡" }}
+            </p>
+            <a
+              class="btn btn-success btn-link btn-sm"
+              href="javascript:void(0)"
+            >
+              <i class="tim-icons icon-minimal-right"> </i>
+            </a>
+          </div>
+          <div class="btn-wrapper">
+            <div class="button-container">
+              <button
+                class="btn btn-icon btn-simple btn-round btn-neutral mr-1"
+                href=""
+              >
+                <i class="tim-icons icon-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-5">
+          <img alt="Circle image" class="img-fluid" src="{{ datos.image }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

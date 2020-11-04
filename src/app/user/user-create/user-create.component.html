@@ -1,0 +1,216 @@
+<div class="wrapper">
+  <div class="page-header">
+    <div class="page-header-image"></div>
+    <div class="content">
+      <div class="container">
+        <img class="shapes triangle" src="assets/img/triunghiuri.png" />
+
+        <img class="shapes wave" src="assets/img/waves.png" />
+
+        <div class="row">
+          <div class="col-lg-8 col-md-8 offset-lg-0 offset-md-3">
+            <div class="square square-7" id="square7"></div>
+            <div class="square square-8" id="square8"></div>
+            <div class="card card-register">
+              <div class="card-header">
+                <img
+                  alt="Card image"
+                  class="card-img"
+                  src="assets/img/square1-red.png"
+                />
+
+                <h4 class="card-title">Registro</h4>
+              </div>
+              <div class="card-body">
+                <form class="form" [formGroup]="formCreate">
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-single-02"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Nombre"
+                      type="text"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                      formControlName="name"
+                    />
+                    <div class="col-sm-4">
+                      <small
+                        *ngIf="errorHandling('name', 'required')"
+                        class="text-danger"
+                      >
+                        El nombre de usuario es requerido
+                      </small>
+                    </div>
+                  </div>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-badge"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="ID"
+                      type="number"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                      formControlName="idCard"
+                    />
+                    <div class="col-sm-4">
+                      <small
+                        *ngIf="errorHandling('idCard', 'required')"
+                        class="text-danger"
+                      >
+                        El ID de usuario es requerido
+                      </small>
+                    </div>
+                  </div>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-mobile"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Telefono"
+                      type="number"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                      formControlName="telephone"
+                    />
+                    <div class="col-sm-4">
+                      <small
+                        *ngIf="errorHandling('telephone', 'required')"
+                        class="text-danger"
+                      >
+                        El telefono es requerido
+                      </small>
+                    </div>
+                  </div>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-email-85"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Email"
+                      type="text"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                      formControlName="email"
+                    />
+                    <div class="col-sm-4">
+                      <small
+                        *ngIf="errorHandling('email', 'required')"
+                        class="text-danger"
+                      >
+                        El email es requerido
+                      </small>
+                    </div>
+                  </div>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus2 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-lock-circle"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Password"
+                      type="password"
+                      (focus)="focus2 = true"
+                      (blur)="focus2 = false"
+                      formControlName="password"
+                    />
+                    <div class="col-sm-4">
+                      <small
+                        *ngIf="errorHandling('password', 'required')"
+                        class="text-danger"
+                      >
+                        El password es requerido
+                      </small>
+                    </div>
+                  </div>
+                  <label for="roles">Rol</label> <br />
+                  <div class="btn-group dropdown" dropdown>
+                    <select
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      class="btn btn-danger dropdown-toggle dropdown-toggle"
+                      data-toggle="dropdown"
+                      dropdownToggle
+                      type="button"
+                      id="dropdownMenuLink"
+                      formControlName="rol_id"
+                    >
+                      <option
+                        class="dropdown-item"
+                        *ngFor="let rol of roles"
+                        [value]="rol.id"
+                      >
+                        {{ rol.name }}
+                      </option>
+                    </select>
+                    <div class="col-sm-4">
+                      <small
+                        *ngIf="errorHandling('rol_id', 'required')"
+                        class="text-danger"
+                      >
+                        El rol es requerido
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button
+                      class="btn btn-danger btn-round btn-lg"
+                      (click)="submitForm()"
+                    >
+                      Registrarse
+                    </button>
+                    <button
+                      type="reset"
+                      class="btn btn-secondary btn-round btn-lg"
+                      (click)="onReset()"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="register-bg"></div>
+        <div class="square square-1" id="square1"></div>
+        <div class="square square-2" id="square2"></div>
+        <div class="square square-3" id="square3"></div>
+        <div class="square square-4" id="square4"></div>
+        <div class="square square-5" id="square5"></div>
+        <div class="square square-6" id="square6"></div>
+      </div>
+    </div>
+  </div>
+</div>

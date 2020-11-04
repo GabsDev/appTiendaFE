@@ -1,0 +1,60 @@
+<section class="section section-lg section-coins">
+  <img class="path" src="assets/img/path3.png" />
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <hr class="line-info" />
+
+        <h1>
+          Nuestros productos
+          <span class="text-info">se ajustan a sus necesidades </span>
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of datos">
+        <div class="card card-coin card-plain" style="padding-top: 70px">
+          <div class="card-header">
+            <img
+              class="img-center img-fluid"
+              src="{{ item.image }}"
+              alt="Imagen {{ item.image }}"
+            />
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <h4 class="text-uppercase">{{ item.name }}</h4>
+                <span> {{ item.price | currency: "₡" }} </span>
+                <hr class="line-primary" />
+              </div>
+            </div>
+            <div>
+              <div class="card-text">
+                <ul class="list-group">
+                  <b style="text-decoration: underline">Caracteristicas</b>
+                  <li
+                    class="list-group-item"
+                    *ngFor="let item of item.features"
+                  >
+                    {{ item.name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <button
+              class="btn btn-primary btn-simple"
+              [routerLink]="['/product/', item.id]"
+              routerLinkActive="active"
+            >
+              Mas info
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
