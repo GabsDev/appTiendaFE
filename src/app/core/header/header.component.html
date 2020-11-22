@@ -44,6 +44,18 @@
           *ngIf="isAutenticated"
           >Activos</a
         >
+        <a
+          class="dropdown-item"
+          [routerLink]="['/product/create']"
+          *ngIf="isAutenticated"
+          >Crear</a
+        >
+        <a
+          class="dropdown-item"
+          [routerLink]="['/product/update']"
+          *ngIf="isAutenticated"
+          >Actualizar</a
+        >
       </div>
     </li>
 
@@ -71,15 +83,48 @@
           *ngIf="isAutenticated"
           >Activos</a
         >
+        <a
+          class="dropdown-item"
+          [routerLink]="['staff/delivery/create']"
+          *ngIf="isAutenticated"
+          >Crear</a
+        >
+        <a
+          class="dropdown-item"
+          [routerLink]="['staff/delivery/update']"
+          *ngIf="isAutenticated"
+          >Actualizar</a
+        >
       </div>
     </li>
-    <button
-      *ngIf="isAutenticated"
-      class="btn btn-link mr-1"
-      [routerLink]="['/orders']"
-    >
-      Ordenes
-    </button>
+
+    <li *ngIf="isAutenticated" class="dropdown nav-item" dropdown>
+      <a
+        class="dropdown-toggle nav-link dropdown-toggle"
+        data-toggle="dropdown"
+        dropdownToggle
+        href="javascript:void(0)"
+      >
+        <button *ngIf="isAutenticated" class="btn btn-link mr-1">
+          Ordenes
+        </button>
+      </a>
+      <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+        <a
+          class="dropdown-item"
+          [routerLink]="['orders']"
+          *ngIf="isAutenticated"
+          >Todas</a
+        >
+        <a
+          class="dropdown-item"
+          [routerLink]="['orders/create']"
+          *ngIf="isAutenticated"
+          >Facturar</a
+        >
+      </div>
+    </li>
+
     <div class="navbar-collapse justify-content-end" id="navigation">
       <div class="navbar-collapse-header">
         <div class="row">

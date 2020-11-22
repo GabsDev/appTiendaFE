@@ -9,12 +9,16 @@ import { ProductShowComponent } from "./product-show/product-show.component";
 import { RouterModule } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductUpdateComponent } from './product-update/product-update.component';
 
 @NgModule({
   declarations: [
     ProductIndexComponent,
     ProductAllComponent,
     ProductShowComponent,
+    ProductCreateComponent,
+    ProductUpdateComponent,
   ],
   imports: [
     CommonModule,

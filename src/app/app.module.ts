@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { PagesModule } from "./pages/pages.module";
 import { CoreModule } from "./core/core.module";
@@ -16,7 +16,8 @@ import { UserModule } from "./user/user.module";
 import { ProductModule } from "./product/product.module";
 import { OrderModule } from "./order/order.module";
 import { DeliveryStaffModule } from "./delivery-staff/delivery-staff.module";
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpErrorInterceptorService } from "./share/http-error-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,13 @@ import { BrowserModule } from '@angular/platform-browser';
     RouterModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
