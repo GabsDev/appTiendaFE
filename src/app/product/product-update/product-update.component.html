@@ -1,1 +1,47 @@
-<p>product-update works!</p>
+<section class="section section-lg">
+  <img class="path" src="assets/img/path2.png" />
+  <div class="page-header">
+    <div class="content-center" *ngIf="datos?.id"></div>
+    <div class="container">
+      <hr class="line-success" />
+      <h3>Listado de Productos</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-center">Nombre</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th class="text-right">Estado</th>
+            <th class="text-right">Aciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datos">
+            <td class="text-center">{{ item.name }}</td>
+            <td>{{ item.price | currency: "₡" }}</td>
+            <td class="text-right">
+              <img
+                width="10%"
+                height="10%"
+                src=" {{ item.image }}"
+                alt="{{ item.name }}"
+              />
+            </td>
+            <td>{{ item.enable }}</td>
+            <td class="td-actions text-right">
+              <button
+                type="button"
+                rel="tooltip"
+                class="btn btn-info btn-sm btn-icon"
+                (click)="actualizarProducto(item.id)"
+                routerLinkActive="active"
+              >
+                <i class="tim-icons icon-settings-gear-63"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

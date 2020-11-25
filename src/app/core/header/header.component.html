@@ -73,12 +73,6 @@
       <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
         <a
           class="dropdown-item"
-          [routerLink]="['staff/delivery/all']"
-          *ngIf="isAutenticated"
-          >Todos</a
-        >
-        <a
-          class="dropdown-item"
           [routerLink]="['staff/delivery']"
           *ngIf="isAutenticated"
           >Activos</a
@@ -89,12 +83,7 @@
           *ngIf="isAutenticated"
           >Crear</a
         >
-        <a
-          class="dropdown-item"
-          [routerLink]="['staff/delivery/update']"
-          *ngIf="isAutenticated"
-          >Actualizar</a
-        >
+      
       </div>
     </li>
 
@@ -121,7 +110,7 @@
           [routerLink]="['orders/create']"
           *ngIf="isAutenticated"
           >Facturar</a
-        >
+        >x
       </div>
     </li>
 

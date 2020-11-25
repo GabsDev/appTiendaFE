@@ -1,1 +1,198 @@
-<p>delivery-create works!</p>
+<section class="section section-lg">
+  <img class="path" src="assets/img/path2.png" />
+  <div class="page-header">
+    <div class="content-center">
+      <div class="container">
+        <hr class="line-success" />
+        <h3>Creacion de Personal Entrega</h3>
+
+        <div id="inputs">
+          <div class="row">
+            <div class="col-sm-6 col-lg-6">
+              <form
+                class="form"
+                [formGroup]="formCreate"
+                (ngSubmit)="submitForm()"
+                novalidate
+              >
+                <div class="form-group">
+                  <div class="col-auto">
+                    <input
+                      class="form-control"
+                      placeholder="Nombre Completo"
+                      type="text"
+                      formControlName="fullName"
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <small
+                      *ngIf="errorHandling('fullName', 'required')"
+                      class="text-danger"
+                    >
+                      El nombre del staff es requerido
+                    </small>
+                  </div>
+                  <br />
+                  <div class="col-auto">
+                    <input
+                      class="form-control"
+                      placeholder="Cedula"
+                      type="number"
+                      formControlName="idCard"
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <small
+                      *ngIf="errorHandling('idCard', 'required')"
+                      class="text-danger"
+                    >
+                      La cedula del staff es requerida
+                    </small>
+                  </div>
+                  <br />
+                  <div class="col-auto">
+                    <input
+                      class="form-control"
+                      placeholder="Telefono"
+                      type="tel"
+                      formControlName="telephone"
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <small
+                      *ngIf="errorHandling('telephone', 'required')"
+                      class="text-danger"
+                    >
+                      El telefono del staff es requerido
+                    </small>
+                  </div>
+                  <br />
+                  <div class="col-auto">
+                    <input
+                      class="form-control"
+                      placeholder="email"
+                      type="email"
+                      formControlName="email"
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <small
+                      *ngIf="errorHandling('email', 'required')"
+                      class="text-danger"
+                    >
+                      El email del staff es requerido
+                    </small>
+                  </div>
+                </div>
+                <br />
+                <div class="row" id="checkRadios">
+                  <!--         <div class="col-sm-6 col-lg-6">
+                    <p class="category">Features</p>
+
+                    <div class="form-check" formArrayName="features">
+                      <div
+                        class="form-check"
+                        *ngFor="let p of features.controls; index as i"
+                      >
+                        <label class="form-check-label">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            [formControlName]="i"
+                            [value]="featuresList[i]?.id"
+                            (change)="
+                              onCheckChange(featuresList[i]?.id, $event)
+                            "
+                          />
+
+                          <span class="form-check-sign"
+                            >{{ featuresList[i]?.name }}
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="col-sm-6 col-lg-6">
+                    <p class="category">Estado</p>
+                    <div class="form-check form-check-radio">
+                      <label class="form-check-label">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="exampleRadios1"
+                          value="0"
+                          formControlName="enable"
+                        />
+                        Inactivo
+                        <span class="form-check-sign"></span>
+                      </label>
+                    </div>
+                    <div class="form-check form-check-radio">
+                      <label class="form-check-label">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="exampleRadios2"
+                          value="1"
+                          formControlName="enable"
+                        />
+                        Activo
+                        <span class="form-check-sign"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <label for="vehicle_id">Vehiculo</label> <br />
+                <div class="btn-group dropdown" dropdown>
+                  <select
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="btn btn-danger dropdown-toggle dropdown-toggle"
+                    data-toggle="dropdown"
+                    dropdownToggle
+                    type="button"
+                    id="dropdownMenuLink"
+                    formControlName="vehicle_id"
+                  >
+                    <option
+                      class="dropdown-item"
+                      *ngFor="let vehicle of vehicles"
+                      [value]="vehicle.id"
+                    >
+                      {{ vehicle.brand }} - {{ vehicle.model }}
+                    </option>
+                  </select>
+                  <div class="col-sm-4">
+                    <small
+                      *ngIf="errorHandling('vehicle_id', 'required')"
+                      class="text-danger"
+                    >
+                      El vehiculo es requerido
+                    </small>
+                  </div>
+                </div>
+
+                <br />
+                <button
+                  style="margin: 20px"
+                  class="btn btn-success btn-round btn-lg"
+                >
+                  Crear
+                </button>
+                <button
+                  style="margin: 20px"
+                  type="reset"
+                  class="btn btn-secondary btn-round btn-lg"
+                  (click)="onReset()"
+                >
+                  Cancelar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

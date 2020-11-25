@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { AuthenticationService } from "src/app/share/authentication.service";
@@ -14,10 +15,13 @@ export class DeliveryIndexComponent implements OnInit {
   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   isAutenticated: boolean;
+  route: ActivatedRoute;
+
   constructor(
     private gService: GenericService,
     private authService: AuthenticationService,
-    private notificacion: NotificacionService
+    private notificacion: NotificacionService,
+    private router: Router
   ) {
     this.listaStaffDelivery();
   }
@@ -46,6 +50,18 @@ export class DeliveryIndexComponent implements OnInit {
         this.datos = data;
       });
   }
+
+  actualizarStaff(id: number) {
+    this.router.navigate(["/staff/delivery/update/", id], {
+      relativeTo: this.route,
+    });
+  }
+  crearStaff() {
+    this.router.navigate(["/staff/delivery/create"], {
+      relativeTo: this.route,
+    });
+  }
+
   ngOnDestroy() {
     this.destroy$.next(true);
     // Desinscribirse

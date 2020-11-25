@@ -20,9 +20,9 @@ export class ProductShowComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //Obtener el id del videojuego
+    //Obtener el id del producto
     let id = +this.route.snapshot.paramMap.get("id");
-    //Obtener el videojuego
+    //Obtener el producto
     this.obtenerProducto(id);
   }
   obtenerProducto(id: any) {

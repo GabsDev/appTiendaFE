@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { AuthenticationService } from 'src/app/share/authentication.service';
-import { GenericService } from 'src/app/share/generic.service';
-import { NotificacionService } from 'src/app/share/notificacion.service';
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
+import { AuthenticationService } from "src/app/share/authentication.service";
+import { GenericService } from "src/app/share/generic.service";
+import { NotificacionService } from "src/app/share/notificacion.service";
 
 @Component({
   selector: "app-order-index",
@@ -30,7 +30,7 @@ export class OrderIndexComponent implements OnInit {
     );
 
     /*
-    Utilizar el servicios genérico para listar los videojuegos
+    Utilizar el servicios genérico para listar las ordenes
     * Acción list indicando la ruta, recordando que indica únicamente lo que falta después de 'http://127.0.0.1:8000/api/v1/
     * takeUntil cerrar la subscripción, cuando se destruye el componente
     * Subscripción a la solicitud

@@ -4,14 +4,14 @@
     <div class="content-center">
       <div class="container">
         <hr class="line-success" />
-        <h3>Creacion de productos</h3>
+        <h3>Actualizacion de productos</h3>
 
         <div id="inputs">
           <div class="row">
             <div class="col-sm-6 col-lg-6">
               <form
                 class="form"
-                [formGroup]="formCreate"
+                [formGroup]="formUpdate"
                 (ngSubmit)="submitForm()"
                 novalidate
               >
@@ -178,13 +178,13 @@
                   style="margin: 20px"
                   class="btn btn-success btn-round btn-lg"
                 >
-                  Crear
+                  Actualizar
                 </button>
                 <button
                   style="margin: 20px"
                   type="reset"
                   class="btn btn-secondary btn-round btn-lg"
-                  (click)="onReset()"
+                  (click)="onBack()"
                 >
                   Cancelar
                 </button>

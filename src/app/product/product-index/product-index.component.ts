@@ -23,7 +23,7 @@ export class ProductIndexComponent implements OnInit {
   ngOnInit(): void {}
   listaProductos() {
     /*
-    Utilizar el servicios genérico para listar los videojuegos
+    Utilizar el servicios genérico para listar los productos
     * Acción list indicando la ruta, recordando que indica únicamente lo que falta después de 'http://127.0.0.1:8000/api/v1/
     * takeUntil cerrar la subscripción, cuando se destruye el componente
     * Subscripción a la solicitud

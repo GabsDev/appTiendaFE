@@ -27,27 +27,24 @@
             </td>
             <td class="td-actions text-right">
               <button
+                style="margin: 20px"
                 type="button"
                 rel="tooltip"
                 class="btn btn-info btn-sm btn-icon"
                 [routerLink]="['/staff/delivery', item.id]"
                 routerLinkActive="active"
               >
-                <i class="tim-icons icon-single-02"></i>
+                <i class="tim-icons icon-zoom-split"></i>
               </button>
               <button
+                style="margin: 20px"
                 type="button"
                 rel="tooltip"
-                class="btn btn-success btn-sm btn-icon"
+                class="btn btn-warning btn-sm btn-icon"
+                [routerLink]="['/staff/delivery/update/', item.id]"
+                routerLinkActive="active"
               >
                 <i class="tim-icons icon-settings-gear-63"></i>
-              </button>
-              <button
-                type="button"
-                rel="tooltip"
-                class="btn btn-danger btn-sm btn-icon"
-              >
-                <i class="tim-icons icon-simple-remove"></i>
               </button>
             </td>
           </tr>
