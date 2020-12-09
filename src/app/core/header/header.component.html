@@ -83,7 +83,6 @@
           *ngIf="isAutenticated"
           >Crear</a
         >
-      
       </div>
     </li>
 
@@ -117,11 +116,21 @@
     <div class="navbar-collapse justify-content-end" id="navigation">
       <div class="navbar-collapse-header">
         <div class="row">
-          <div class="col-6 collapse-brand"><a></a></div>
+          <div class="col-6 collapse-brand"></div>
           <div class="col-6 collapse-close text-right"></div>
         </div>
       </div>
       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/orders/create"
+            routerLinkActive="active"
+            class="nav-link"
+            ><i class="fas fa-shopping-cart"></i>
+            <span class="badge badge-default"> {{ qtyItems }} </span>
+          </a>
+        </li>
         <li class="nav-item p-0">
           <a
             class="nav-link"

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
 export class ItemCart {
   idItem: number;
   product: any;
@@ -8,7 +8,7 @@ export class ItemCart {
   subtotal: number;
 }
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class CartService {
   private cart = new BehaviorSubject<ItemCart[]>(null); //Definimos nuestro BehaviorSubject, este debe tener un valor inicial siempre
@@ -17,16 +17,21 @@ export class CartService {
   constructor() {
     //Obtener los datos
     this.cart = new BehaviorSubject<any>(
-      JSON.parse(localStorage.getItem('orden'))
+      JSON.parse(localStorage.getItem("orden"))
     );
     //Establecer un observable
     this.currentDataCart$ = this.cart.asObservable();
   }
   addToCart(producto: any) {
+    console.log(producto);
     const newItem = new ItemCart();
     //Armar instancia de ItemCart con los valores respectivos del producto
     newItem.idItem = producto.id | producto.idItem;
-    newItem.precio = producto.precio;
+    if (producto.product != undefined) {
+      newItem.precio = producto.product.price;
+    } else {
+      newItem.precio = producto.precio;
+    }
     newItem.cantidad = 1;
     newItem.subtotal = this.calculoSubtotal(newItem);
     newItem.product = producto;
@@ -38,7 +43,7 @@ export class CartService {
       let objIndex = listCart.findIndex((obj) => obj.idItem == newItem.idItem);
       //Si ya cargamos uno aumentamos su cantidad
       if (objIndex != -1) {
-        if (producto.hasOwnProperty('cantidad')) {
+        if (producto.hasOwnProperty("cantidad")) {
           //Actualizar cantidad
           if (producto.cantidad <= 0) {
             this.removeFromCart(newItem);
@@ -65,7 +70,7 @@ export class CartService {
     }
     this.cart.next(listCart); //Enviamos el valor al Observable
     this.qtyItems.next(listCart.length);
-    localStorage.setItem('orden', JSON.stringify(this.cart.getValue()));
+    localStorage.setItem("orden", JSON.stringify(this.cart.getValue()));
   }
   private calculoSubtotal(item: ItemCart) {
     return item.precio * item.cantidad;
@@ -81,7 +86,7 @@ export class CartService {
     }
     this.cart.next(listCart); //Enviamos el valor al Observable
     this.qtyItems.next(listCart.length);
-    localStorage.setItem('orden', JSON.stringify(this.cart.getValue()));
+    localStorage.setItem("orden", JSON.stringify(this.cart.getValue()));
   }
 
   public getItems(): any {
@@ -109,6 +114,6 @@ export class CartService {
   public deleteCart() {
     this.cart.next(null); //Enviamos el valor al Observable
     this.qtyItems.next(0);
-    localStorage.setItem('orden', JSON.stringify(this.cart.getValue()));
+    localStorage.setItem("orden", JSON.stringify(this.cart.getValue()));
   }
 }

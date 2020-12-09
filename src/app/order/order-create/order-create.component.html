@@ -1,1 +1,104 @@
-<p>order-create works!</p>
+<section class="section section-lg">
+  <img class="path" src="assets/img/path2.png" />
+  <div class="page-header">
+    <br /><br />
+    <div class="container">
+      <div class="row card">
+        <div class="card-header">Orden</div>
+        <div class="card-body">
+          <div class="col">
+            <p class="card-text">Fecha: {{ fecha | date: "dd/MM/yyyy" }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row card">
+        <div class="card-header">Detalle Orden</div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th class="right">Precio</th>
+                <th class="center">Cantidad</th>
+                <th class="right">SubTotal</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr
+                class="group"
+                style="cursor: pointer"
+                *ngFor="let item of items; let i = index"
+              >
+                <td>
+                  <p>{{ item.product.name }}</p>
+                </td>
+                <td class="right">
+                  <p>{{ item.product.price | currency: "₡" }}</p>
+                </td>
+                <td class="center">
+                  <input
+                    id="cantidad "
+                    type="number"
+                    class="form-control mb-2"
+                    [(ngModel)]="item.cantidad"
+                    (change)="actualizarCantidad(item)"
+                  />
+                </td>
+
+                <td class="right">
+                  <p>{{ item.subtotal | currency: "₡" }}</p>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-primary btn-sm"
+                    (click)="eliminarItem(item)"
+                  >
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row clearfix d-flex justify-content-end">
+            <div class="col-md-4">
+              <table class="table table-bordered table-hover">
+                <tbody>
+                  <tr>
+                    <td class="left">
+                      <strong>Total</strong>
+                    </td>
+                    <td class="right">
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">₡</div>
+                        </div>
+                        <input
+                          readonly
+                          type="text"
+                          class="form-control"
+                          id="total"
+                          type="text"
+                          [value]="total"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="col">
+                <button
+                  class="btn btn-success mb-2 float-right"
+                  (click)="ordenar()"
+                >
+                  Ordenar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
